@@ -8,7 +8,8 @@
     "build": "tsc",
     "build:run": "tsc && node dist/index.js",
     "prepublish": "tsc",
-    "test": "jest"
+    "test": "tsc && jest",
+    "test:cov": "tsc && jest --coverage"
   },
   "keywords": [],
   "author": "50BytesOfJohn",
