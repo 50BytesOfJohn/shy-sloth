@@ -2,6 +2,7 @@
 ![Minified size](https://img.shields.io/bundlephobia/min/shy-sloth?style=for-the-badge)
 ![npm](https://img.shields.io/npm/dm/shy-sloth?style=for-the-badge)
 ![NPM](https://img.shields.io/npm/l/shy-sloth?style=for-the-badge)
+![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/50BytesOfJohn/83096d5101dbcd1a01f6e3b65c33a2ce/raw/a800f471732e8ee64da8b6a770157189c181b1f3/shy-sloth-coverage.json)
 
 # Shy Sloth
 

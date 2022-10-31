@@ -1,0 +1,42 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  update-coverage:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Install
+        run: pnpm install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Test cov
+        run: echo COV_BASE_PERCENT=$(pnpm test:cov:text | grep "Statements" | head -1 | cut -f2 -d":" | cut -f1 -d"%" | xargs) >> $GITHUB_ENV
+      - name: Create Coverage Badge
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 83096d5101dbcd1a01f6e3b65c33a2ce
+          filename: shy-sloth-coverage.json
+          label: Coverage
+          message: ${{ env.COV_BASE_PERCENT }}
+          valColorRange: ${{ env.COV_BASE_PERCENT }}
+          maxColorRange: 100
+          minColorRange: 0
+          color: brightgreen
+          style: for-the-badge
+          namedLogo: jest
