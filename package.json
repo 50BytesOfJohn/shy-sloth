@@ -9,7 +9,8 @@
     "build:run": "tsc && node dist/index.js",
     "prepublish": "tsc",
     "test": "tsc && jest",
-    "test:cov": "tsc && jest --coverage"
+    "test:cov": "tsc && jest --coverage",
+    "test:cov:text": "jest --coverage --coverageReporters=\"text-summary\""
   },
   "keywords": [],
   "author": "50BytesOfJohn",
